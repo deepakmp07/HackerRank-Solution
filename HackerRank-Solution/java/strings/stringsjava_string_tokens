@@ -1,0 +1,95 @@
+/*Two strings,  and , are called anagrams if they contain all the same characters in the same frequencies. For this challenge, the test is not case-sensitive. For example, the anagrams of CAT are CAT, ACT, tac, TCA, aTC, and CtA.
+
+Function Description
+
+Complete the isAnagram function in the editor.
+
+isAnagram has the following parameters:
+
+string a: the first string
+string b: the second string
+Returns
+
+boolean: If  and  are case-insensitive anagrams, return true. Otherwise, return false.
+Input Format
+
+The first line contains a string .
+The second line contains a string .
+
+Constraints
+
+Strings  and  consist of English alphabetic characters.
+The comparison should NOT be case sensitive.
+Sample Input 0
+
+anagram
+margana
+Sample Output 0
+
+Anagrams
+Explanation 0
+
+Character	Frequency: anagram	Frequency: margana
+A or a	3	3
+G or g	1	1
+N or n	1	1
+M or m	1	1
+R or r	1	1
+The two strings contain all the same letters in the same frequencies, so we print "Anagrams".
+
+Sample Input 1
+
+anagramm
+marganaa
+Sample Output 1
+
+Not Anagrams*/
+import java.util.Scanner;
+
+public class Solution {
+   static boolean isAnagram(String a, String b) {
+        String alta = a.toLowerCase();
+        String altb = b.toLowerCase();
+        String altr="";
+        int e=0;
+        int c= altb.length();
+        int d=0;
+        StringBuilder str = new StringBuilder(altb);
+        String h="";
+        if(alta.length()!=altb.length()){
+            return false;
+        }
+        int v=0;
+        int s=altb.length();
+        for(int i=0;i<c;i++){
+            for(int j=0;j<s;j++){
+                if(alta.charAt(i)==altb.charAt(j)){
+                    h=h+alta.charAt(i);
+                    altb=str.deleteCharAt(j).toString();
+                    //System.out.print(h+"\n");
+                    v=1;
+                    s=altb.length();
+                    break;
+                }}
+            if(v==0){
+                return false;
+            }
+            v=0;
+        }
+        if(h.equals(alta))
+            return true;
+        else
+            return false;
+    }
+
+
+
+    public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
